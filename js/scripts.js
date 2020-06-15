@@ -24,11 +24,12 @@ AddressBook.prototype.findContact = function(id) {
     }                          // <-- This line is also new!
   };
   return false;
+}
 
   AddressBook.prototype.deleteContact = function(id) {
     for (let i=0; i< this.contacts.length; i++) {
       if (this.contacts[i]) {     // <-- This line is new!
-        if (this.contacts[i].id == id) {
+        if (this.contacts[i].id === id) {
           delete this.contacts[i];
           return true;
         }
@@ -49,8 +50,6 @@ Contact.prototype.fullName = function() {
 }
 
 // UI
-let addressBook = new AddressBook();
-
 $(document).ready(function() {
   $("form#formOne").submit(function(event) {
     event.preventDefault();
@@ -58,14 +57,15 @@ $(document).ready(function() {
     const lastName1 = $("input#lastName").val();
     const number1 = $("input#number").val();
 
-    let newContact = new Contact(firstName1, lastName1, number1)
-    addressBook.addContact(newContact)
+    let addressBook = new AddressBook();
+    let newContact = new Contact(firstName1, lastName1, number1); //creates a new object from our constructor function using the input information from our form
+    addressBook.addContact(newContact);
+    console.log(addressBook.contacts);
 
-    
+    $("#fName").text(newContact.firstName); //input variable names from our constror function "Contact"
+    $("#lName").text(newContact.lastName);
+    $("#pNumber").text(newContact.phoneNumber); //always attach new object to the key youre trying to see
+    $("#userAddress").show();
+
   });
 });
-
-// $("#userAddress").show();
-// $("#fName").text(firstName1);
-// $("#lName").text(lastName1);
-// $("#pNumber").text(number1);
