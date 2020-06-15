@@ -1,5 +1,19 @@
 $(document).ready(function() {
-  $("#formOne").submit(function(event)
+  $("#formOne").submit(function(event) {
+    const firstName = $("input#firstName").val();
+    const lastName = $("input#lastName").val();
+    const number = $("input#number).val();
+
+    $("#fName").text(firstName);
+    $("#lName").text(lastName);
+    $("#pNumber").text(number);
+    $("#userAddress").show();
+
+    event.preventDefault();
+    
+  });
+
+});
 
 
 // Business logic for AddressBook -------
