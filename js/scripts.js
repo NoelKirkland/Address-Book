@@ -1,20 +1,3 @@
-$(document).ready(function() {
-  $("#formOne").submit(function(event) {
-    const firstName = $("input#firstName").val();
-    const lastName = $("input#lastName").val();
-    const number = $("input#number).val();
-
-    $("#fName").text(firstName);
-    $("#lName").text(lastName);
-    $("#pNumber").text(number);
-    $("#userAddress").show();
-
-    event.preventDefault();
-    
-  });
-
-});
-
 
 // Business logic for AddressBook -------
 function AddressBook() {
@@ -64,3 +47,25 @@ function Contact(firstName, lastName, phoneNumber) {
 Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
+
+// UI
+let addressBook = new AddressBook();
+
+$(document).ready(function() {
+  $("form#formOne").submit(function(event) {
+    event.preventDefault();
+    const firstName1 = $("input#firstName").val();
+    const lastName1 = $("input#lastName").val();
+    const number1 = $("input#number").val();
+
+    let newContact = new Contact(firstName1, lastName1, number1)
+    addressBook.addContact(newContact)
+
+    
+  });
+});
+
+// $("#userAddress").show();
+// $("#fName").text(firstName1);
+// $("#lName").text(lastName1);
+// $("#pNumber").text(number1);
